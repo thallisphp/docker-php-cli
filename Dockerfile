@@ -19,8 +19,6 @@ RUN set -xe \
     autoconf \
     cyrus-sasl-dev \
     libgsasl-dev \
-    nano \
-    shadow \
     && apk add --no-cache --update libmemcached-libs zlib \
     && set -xe \
     && apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
@@ -38,3 +36,8 @@ RUN set -xe \
     && rm -rf /usr/share/php \
     && rm -rf /tmp/* \
     && apk del .memcached-deps .phpize-deps
+
+RUN apk add --no-cache \
+    nano \
+    shadow \
+    && rm -rf /tmp/*
