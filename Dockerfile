@@ -34,4 +34,7 @@ RUN set -xe \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-enable redis \
     && php -m \
-    && php --ini
+    && php --ini \
+    && rm -rf /usr/share/php \
+    && rm -rf /tmp/* \
+    && apk del .memcached-deps .phpize-deps
