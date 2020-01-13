@@ -19,8 +19,6 @@ RUN set -xe \
     autoconf \
     cyrus-sasl-dev \
     libgsasl-dev \
-    nano \
-    shadow \
     && apk add --no-cache --update libmemcached-libs zlib \
     && set -xe \
     && apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
@@ -37,6 +35,9 @@ RUN set -xe \
     && docker-php-ext-enable xdebug \
     && php -m \
     && php --ini \
+    && apk add --no-cahe
+    && nano \
+    && shadow \
     && rm -rf /usr/share/php \
     && rm -rf /tmp/* \
     && apk del .memcached-deps .phpize-deps
