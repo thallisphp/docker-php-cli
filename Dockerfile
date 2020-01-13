@@ -34,5 +34,14 @@ RUN docker-php-ext-install pdo
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-enable redis
 
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
+
 RUN php -m
 RUN php --ini
+
+RUN apk --no-cache add shadow
+
+RUN rm -rf /usr/share/php \
+    && rm -rf /tmp/* \
+    && apk del .memcached-deps .phpize-deps
