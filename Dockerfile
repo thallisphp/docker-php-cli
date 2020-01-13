@@ -1,4 +1,4 @@
-FROM php:7.4-cli-alpine
+FROM php:7.4-fpm-alpine
 
 LABEL maintainer="ThallisPHP <thallisphp@gmail.com>"
 
