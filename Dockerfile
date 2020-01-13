@@ -35,9 +35,11 @@ RUN set -xe \
     && docker-php-ext-enable xdebug \
     && php -m \
     && php --ini \
-    && apk add --no-cahe
-    && nano \
-    && shadow \
     && rm -rf /usr/share/php \
     && rm -rf /tmp/* \
     && apk del .memcached-deps .phpize-deps
+
+RUN apk add --no-cache \
+    nano \
+    shadow \
+    && rm -rf /tmp/*
