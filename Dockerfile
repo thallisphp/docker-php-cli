@@ -40,4 +40,8 @@ RUN set -xe \
 RUN apk add --no-cache \
     nano \
     shadow \
+    git \
+    zip \
     && rm -rf /tmp/*
+
+RUN curl --silent --show-error https://getcomposer.org/installer | php
