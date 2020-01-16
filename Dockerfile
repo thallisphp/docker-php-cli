@@ -19,7 +19,10 @@ RUN set -xe \
     autoconf \
     cyrus-sasl-dev \
     libgsasl-dev \
-    && apk add --no-cache --update libmemcached-libs zlib \
+    && apk add --no-cache --update \
+    libmemcached-libs \
+    zlib \
+    libzip-dev \
     && set -xe \
     && apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
     && apk add --no-cache --update --virtual .memcached-deps $MEMCACHED_DEPS \
@@ -29,17 +32,18 @@ RUN set -xe \
     && pecl install redis \
     && pecl install xdebug \
     && docker-php-ext-install bcmath \
-    && docker-php-ext-install pdo \
-    && docker-php-ext-install pdo_mysql \
+    pdo \
+    pdo_mysql \
+    zip \
+    pcntl \
     && docker-php-ext-enable redis \
-    && docker-php-ext-enable xdebug \
+    xdebug \
     && php -m \
     && php --ini \
-    && rm -rf /usr/share/php \
-    && rm -rf /tmp/* \
-    && apk del .memcached-deps .phpize-deps
-
-RUN apk add --no-cache \
+    && apk add --no-cache \
     nano \
     shadow \
+    && rm -rf /usr/share/php \
+    && rm -rf /tmp/* \
+    && apk del .memcached-deps .phpize-deps \
     && rm -rf /tmp/*
