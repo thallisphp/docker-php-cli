@@ -31,11 +31,14 @@ RUN set -xe \
     && pecl channel-update pecl.php.net \
     && pecl install redis \
     && docker-php-ext-install bcmath \
+    opcache \
     pdo \
     pdo_mysql \
     zip \
     pcntl \
-    && docker-php-ext-enable redis \
+    && docker-php-ext-enable bcmath \
+    redis \
+    opcache \
     && php -m \
     && php --ini \
     && apk add --no-cache \
