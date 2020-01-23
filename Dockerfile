@@ -31,12 +31,14 @@ RUN set -xe \
     && pecl channel-update pecl.php.net \
     && pecl install redis \
     && pecl install xdebug \
-    && docker-php-ext-install bcmath \
+    && docker-php-ext-install opcache \
+    bcmath \
     pdo \
     pdo_mysql \
     zip \
     pcntl \
-    && docker-php-ext-enable redis \
+    && docker-php-ext-enable opcache \
+    redis \
     xdebug \
     && php -m \
     && php --ini \
