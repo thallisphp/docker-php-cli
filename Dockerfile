@@ -36,8 +36,10 @@ RUN set -xe \
     pdo_mysql \
     zip \
     pcntl \
+    opcache \
     && docker-php-ext-enable redis \
     xdebug \
+    opcache \
     && php -m \
     && php --ini \
     && apk add --no-cache \
